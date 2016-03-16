@@ -6,7 +6,7 @@ URxvt*internalBorder:  0
 URxvt*saveLines:       8192
 URxvt*depth:           32
 URxvt*foreground:      white
-URxvt*background:      [50]black
+URxvt*background:      [80]black
 URxvt*cursorColor:     white
 
 URxvt*color0:          #2e3436
