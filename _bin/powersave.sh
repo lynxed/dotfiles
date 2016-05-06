@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function switch_to_battery() {
+function power() {
     echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs'
 
     echo '1' > '/sys/module/snd_hda_intel/parameters/power_save'
@@ -17,9 +17,7 @@ function switch_to_battery() {
     ethtool -s enp2s0f1 wol d;
 }
 
-function switch_to_ac() {
-    echo 'Activating AC-settings'
-
+function performance() {
     echo '500' > '/proc/sys/vm/dirty_writeback_centisecs'
 
     echo '0' > '/sys/module/snd_hda_intel/parameters/power_save'
@@ -36,10 +34,15 @@ function switch_to_ac() {
     ethtool -s enp2s0f1 wol g;
 }
 
-#if [ $(cat '/sys/class/power_supply/AC/online') == '0' ]; then
-#    switch_to_battery
-#else
-#    switch_to_ac
-#fi
-
-switch_to_battery
+case $1 in
+    power)
+        blubb
+        ;;
+    performance)
+        blah
+        ;;
+    *)
+        echo "invalid parameter, use 'power' or 'performance'" >2
+        exit 2
+        ;;
+esac
